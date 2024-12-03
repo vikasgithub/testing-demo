@@ -8,3 +8,5 @@ armeria:
   - port: 0
     protocols:
     - http
+  access-log:
+    type: enabled

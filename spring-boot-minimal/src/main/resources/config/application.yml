@@ -5,16 +5,16 @@ spring.main.web-application-type: none
 # Additional server ports specified with Armeria configuration.
 armeria:
   ports:
-    - port: 8080
+    - port: 8090
       protocols:
         - http
 
-management:
-  server.port: 8081
-  endpoints:
-    web:
-      exposure.include:
-        - health
-        - beans
-      path-mapping:
-        health: healthcheck
+#management:
+#  server.port: 8081
+#  endpoints:
+#    web:
+#      exposure.include:
+#        - health
+#        - beans
+#      path-mapping:
+#        health: healthcheck

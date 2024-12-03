@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <RollingFile name="ACCESS" fileName="access.log"
+                     filePattern="access.%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%m%n</Pattern>
+            </PatternLayout>
+
+            <Policies>
+                <!-- daily rollover -->
+                <TimeBasedTriggeringPolicy/>
+                <!-- each file should be at most 1GB -->
+                <SizeBasedTriggeringPolicy size="1GB"/>
+            </Policies>
+            <!-- keep 30 archives -->
+            <DefaultRolloverStrategy max="30"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.example2.my.access.logs" level="ERROR" additivity="false">
+            <AppenderRef ref="ACCESS"/>
+        </Logger>
+        <Root level="ERROR">
+            <AppenderRef ref="ACCESS"/>
+        </Root>
+    </Loggers>
+</Configuration>

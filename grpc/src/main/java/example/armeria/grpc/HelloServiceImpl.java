@@ -106,7 +106,7 @@ public class HelloServiceImpl extends HelloServiceImplBase {
      */
     @Override
     public StreamObserver<HelloRequest> lotsOfGreetings(StreamObserver<HelloReply> responseObserver) {
-        return new StreamObserver<>() {
+        return new StreamObserver<HelloRequest>() {
             final ArrayList<String> names = new ArrayList<>();
 
             @Override
@@ -133,7 +133,7 @@ public class HelloServiceImpl extends HelloServiceImplBase {
      */
     @Override
     public StreamObserver<HelloRequest> bidiHello(StreamObserver<HelloReply> responseObserver) {
-        return new StreamObserver<>() {
+        return new StreamObserver<HelloRequest>() {
             @Override
             public void onNext(HelloRequest value) {
                 // Respond to every request received.

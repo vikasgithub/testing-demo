@@ -15,9 +15,9 @@ import jakarta.validation.constraints.Size;
  *
  * @see <a href="https://armeria.dev/docs/server-annotated-service">Annotated HTTP Service</a>
  */
-@Component
-@Validated
-@ExceptionHandler(ValidationExceptionHandler.class)
+//@Component
+//@Validated
+//@ExceptionHandler(ValidationExceptionHandler.class)
 public class HelloAnnotatedService {
 
     @Get("/")

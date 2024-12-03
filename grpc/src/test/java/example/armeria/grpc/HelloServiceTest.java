@@ -57,7 +57,7 @@ class HelloServiceTest {
         final ListenableFuture<HelloReply> future =
                 helloService.lazyHello(HelloRequest.newBuilder().setName("Armeria").build());
         final AtomicBoolean completed = new AtomicBoolean();
-        Futures.addCallback(future, new FutureCallback<>() {
+        Futures.addCallback(future, new FutureCallback<HelloReply>() {
             @Override
             public void onSuccess(HelloReply result) {
                 assertThat(result.getMessage()).isEqualTo("Hello, Armeria!");
@@ -91,7 +91,7 @@ class HelloServiceTest {
         final AtomicInteger sequence = new AtomicInteger();
         helloService.lotsOfReplies(
                 HelloRequest.newBuilder().setName("Armeria").build(),
-                new StreamObserver<>() {
+                new StreamObserver<HelloReply>() {
 
                     @Override
                     public void onNext(HelloReply value) {
@@ -124,7 +124,7 @@ class HelloServiceTest {
         final AtomicBoolean completed = new AtomicBoolean();
         helloService.lotsOfReplies(
                 HelloRequest.newBuilder().setName("Armeria").build(),
-                new StreamObserver<>() {
+                new StreamObserver<HelloReply>() {
 
                     @Override
                     public void onNext(HelloReply value) {
@@ -161,7 +161,7 @@ class HelloServiceTest {
         final String[] names = { "Armeria", "Grpc", "Streaming" };
         final AtomicBoolean completed = new AtomicBoolean();
         final StreamObserver<HelloRequest> request =
-                helloService.lotsOfGreetings(new StreamObserver<>() {
+                helloService.lotsOfGreetings(new StreamObserver<HelloReply>() {
                     private boolean received;
 
                     @Override
@@ -198,7 +198,7 @@ class HelloServiceTest {
         final String[] names = { "Armeria", "Grpc", "Streaming" };
         final AtomicBoolean completed = new AtomicBoolean();
         final StreamObserver<HelloRequest> request =
-                helloService.bidiHello(new StreamObserver<>() {
+                helloService.bidiHello(new StreamObserver<HelloReply>() {
                     private int received;
 
                     @Override
